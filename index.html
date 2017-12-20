@@ -14,15 +14,19 @@
 const OurFirstComponent = () => {
   return <h1>I am a child!</h1>;
 };
-const Container = () => {
-  return (
-    <div>
-      <h1>I am the parent!</h1>
-      <OurFirstComponent />
-    </div>
-  );
-};
+class Container extends React.Component {
+  render() {
+    const addNumbers = (num1, num2) => {
+      return num1 + num2;
+    };
+    return (
+      <div>
+        <h1>The sum is: {addNumbers(1, 2)}</h1>
+        <OurFirstComponent />
+      </div>
+    );
+  }
+}
 const placeWeWantToPutComponent = document.getElementById("hook");
 ReactDOM.render(<Container />, placeWeWantToPutComponent);
 </script>
-
