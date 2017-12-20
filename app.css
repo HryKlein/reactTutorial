@@ -57,7 +57,7 @@ body {
   border-color: transparent;
 }
 .play.active:after {
-  content: "";
+  # content: "";
   opacity: 1;
   width: 25px;
   height: 80px;
