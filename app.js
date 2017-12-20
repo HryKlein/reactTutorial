@@ -21,7 +21,7 @@ TIMES_CALLED = 0;
 
 SMOOTHING = 0.5;
 
-MP3_PATH = 'music.mp3';
+MP3_PATH = "music.mp3";
 
 SCALE = {
   MIN: 5.0,
@@ -49,17 +49,17 @@ SIZE = {
 };
 
 COLORS = [
-  '#69D2E7',
-  '#1B676B',
-  '#BEF202',
-  '#EBE54D',
-  '#00CDAC',
-  '#1693A5',
-  '#F9D423',
-  '#FF4E50',
-  '#E7204E',
-  '#0CCABA',
-  '#FF006F'
+  "#69D2E7",
+  "#1B676B",
+  "#BEF202",
+  "#EBE54D",
+  "#00CDAC",
+  "#1693A5",
+  "#F9D423",
+  "#FF4E50",
+  "#E7204E",
+  "#0CCABA",
+  "#FF006F"
 ];
 function getAnimation(file) {
   AudioAnalyser = (function() {
@@ -72,7 +72,7 @@ function getAnimation(file) {
       this.audio = audio != null ? audio : new Audio();
       this.numBands = numBands != null ? numBands : 256;
       this.smoothing = smoothing != null ? smoothing : 0.3;
-      this.audio = document.getElementById('audio');
+      this.audio = document.getElementById("audio");
       if (!this.audio) {
         return;
       }
@@ -88,7 +88,7 @@ function getAnimation(file) {
       this.analyser.fftSize = this.numBands * 2;
       this.bands = new Uint8Array(this.analyser.frequencyBinCount);
       this.audio.addEventListener(
-        'play',
+        "play",
         (function(_this) {
           return function() {
             if (TIMES_CALLED === 1) {
@@ -104,7 +104,7 @@ function getAnimation(file) {
             return (_this.jsNode.onaudioprocess = function() {
               _this.analyser.getByteFrequencyData(_this.bands);
               if (!_this.audio.paused) {
-                return typeof _this.onUpdate === 'function'
+                return typeof _this.onUpdate === "function"
                   ? _this.onUpdate(_this.bands)
                   : void 0;
               }
@@ -179,7 +179,7 @@ function getAnimation(file) {
       ctx.moveTo(this.size * 0.5, 0);
       ctx.lineTo(this.size * -0.5, 0);
       ctx.lineWidth = 1;
-      ctx.lineCap = 'round';
+      ctx.lineCap = "round";
       ctx.globalAlpha = this.smoothedAlpha / this.level;
       ctx.strokeStyle = this.color;
       ctx.stroke();
@@ -217,26 +217,26 @@ function getAnimation(file) {
           })(this);
           analyser.audio = window.audio;
           ANALYSER = analyser;
-          intro = document.getElementById('intro');
-          intro.style.display = 'none';
+          intro = document.getElementById("intro");
+          intro.style.display = "none";
           if (
             /Safari/.test(navigator.userAgent) &&
             !/Chrome/.test(navigator.userAgent)
           ) {
-            warning = document.getElementById('warning2');
-            return (warning.style.display = 'block');
+            warning = document.getElementById("warning2");
+            return (warning.style.display = "block");
           }
         } catch (_error) {
           error = _error;
         }
       } else {
-        warning = document.getElementById('warning1');
-        return (warning.style.display = 'block');
+        warning = document.getElementById("warning1");
+        return (warning.style.display = "block");
       }
     },
     draw: function() {
       var j, len, particle, ref, results;
-      this.globalCompositeOperation = 'lighter';
+      this.globalCompositeOperation = "lighter";
       ref = this.particles;
       results = [];
       for (j = 0, len = ref.length; j < len; j++) {
@@ -263,5 +263,5 @@ function handleFileSelect(evt) {
 getAnimation(null);
 
 document
-  .getElementById('files')
-  .addEventListener('change', handleFileSelect, false);
+  .getElementById("files")
+  .addEventListener("change", handleFileSelect, false);
