@@ -32,6 +32,7 @@ class Container extends React.Component {
     : 'Not playing :(';
     return (
       <div>
+        <PlayButton>
         <h1 onClick={this.handleClick.bind(this)}>{ status } </h1>
         <PlayButton />
       </div>
