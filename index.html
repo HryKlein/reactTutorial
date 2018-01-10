@@ -29,10 +29,15 @@ class Container extends React.Component {
   }
   handleClick() {
     if (this.state.isMusicPlaying) {
-      this.setState({ isMusicPlaying: false });
+      this.audio.pause();
     } else {
-      this.setState({ isMusicPlaying: true });
+      this.audio.play();
     }
+    this.setState(prevState => {
+      return {
+        isMusicPlaying: !prevState.isMusicPlaying
+      };
+    });
   }
   render() {
     let status = this.state.isMusicPlaying ? "Playing :)" : "Not playing :(";
@@ -41,6 +46,12 @@ class Container extends React.Component {
         <PlayButton
           onClick={this.handleClick.bind(this)}
           isMusicPlaying={this.state.isMusicPlaying}
+        />
+        <audio
+          id="audio"
+          ref={audioTag => {
+            this.audio = audioTag;
+          }}
         />
       </div>
     );
