@@ -11,18 +11,31 @@
 <script src="https://soulwire.github.io/sketch.js/js/sketch.min.js"></script>
 <script src="app.js"></script>
 <script type="text/babel">
-const OurFirstComponent = () => {
-  return <h1>I am a child!</h1>;
+const PlayButton = () => {
+  return <a href="#" title="Play video" className="play" />;
 };
-const Container = () => {
-  return (
-    <div>
-      <h1>I am the parent!</h1>
-      <OurFirstComponent />
-    </div>
-  );
-};
+class Container extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isMusicPlaying: false };
+  }
+  handleClick() {
+    if (this.state.isMusicPlaying) {
+      this.setState({ isMusicPlaying: false });
+    } else {
+      this.setState({ isMusicPlaying: true });
+    }
+  }
+  render() {
+    let status = this.state.isMusicPlaying ? "Playing :)" : "Not playing :(";
+    return (
+      <div>
+        <h1 onClick={this.handleClick.bind(this)}>{status} </h1>
+        <PlayButton />
+      </div>
+    );
+  }
+}
 const placeWeWantToPutComponent = document.getElementById("hook");
 ReactDOM.render(<Container />, placeWeWantToPutComponent);
 </script>
-
